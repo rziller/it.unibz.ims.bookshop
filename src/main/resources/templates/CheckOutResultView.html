@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head data-th-replace="fragments/Head :: head"></head>
+    <body>
+        <nav data-th-replace="fragments/Header :: header">Placeholder for Header</nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <div data-th-if="${viewData.content.isSuccess()}">
+                        <h2>Your order has been placed successfully</h2>
+                        <p>
+                            Please keep the order number for further reference:
+                            <span data-th-text="${viewData.content.orderId}" />
+                        </p>
+                    </div>
+
+                    <div data-th-if="${!viewData.content.isSuccess()}">
+                        <h2 class="text-danger">An error occured while processing your order</h2>
+                        <p>
+                            Please contact our
+                            <a href="mailto:support@bookshop.com">Bookshop Support</a>
+                            for further information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

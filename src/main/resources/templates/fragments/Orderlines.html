@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div data-th-fragment="orderlines-list(orderlines)">
+            <ul class="orderlines-list list-unstyled">
+                <li class="media mb-3" data-th-each="orderline : ${orderlines}">
+                    <img class="mr-3" width="75px" data-th-src="|/img/bookcover/${orderline.associatedProduct.productId}.png|" alt="Product Image">
+                    <div class="media-body">
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="mt-0" data-th-text="${orderline.associatedProduct.name}"></h3>
+                                <p class="orderline-price">
+                                    <span data-th-text="${ orderline.getTotalPriceTransient() }" /> €
+                                </p>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div data-th-text="${orderline.qty}" style="width: 48px; text-align: center" />
+                                                </div>
+                                                <div class="col">
+                                                    <form action="/shoppingcart/product/edit" data-th-method="post">
+                                                        <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+                                                        <input type="hidden" name="orderlineId" data-th-value="${orderline.orderlineId}" />
+                                                        <input type="hidden" name="qty" id="qty" data-th-value="${orderline.qty + 1}" />
+                                                        <button type="submit" class="btn btn-primary mb-2 ">+</button>
+                                                    </form>
+                                                    <form action="/shoppingcart/product/edit" data-th-method="post">
+                                                        <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+                                                        <input type="hidden" name="orderlineId" data-th-value="${orderline.orderlineId}" />
+                                                        <input type="hidden" name="qty" id="qty" data-th-value="${orderline.qty - 1}" />
+                                                        <button type="submit" class="btn btn-primary mb-2 ">-</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col">
+                                        <form action="/shoppingcart/product/delete" data-th-method="post">
+                                            <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+                                            <input type="hidden" name="orderlineId" data-th-value="${orderline.orderlineId}" />
+                                            <button type="submit" class="btn btn-primary mb-2 ">x Clear</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

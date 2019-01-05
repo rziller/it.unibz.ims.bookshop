@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div data-th-fragment="customer-information-form(isEditable, customer)">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="customerName">Name</label>
+                    <input type="text" class="form-control" id="customerName" name="customer.name"#
+                           data-th-value="${customer != null && customer.content != null} ? ${customer.content.name}"
+                           data-th-disabled="!${isEditable}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="customerSurname">Surname</label>
+                    <input type="text" class="form-control" id="customerSurname" name="customer.surname"
+                           data-th-value="${customer != null && customer.content != null} ? ${customer.content.surname}"
+                           data-th-disabled="!${isEditable}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="customerEMail">Email</label>
+                    <input type="text" class="form-control" id="customerEMail" name="customer.email"
+                           data-th-value="${customer != null && customer.content != null} ? ${customer.content.email}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

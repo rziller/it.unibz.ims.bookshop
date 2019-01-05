@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <nav data-th-fragment="pagination(paginationLinks)" aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li data-th-each="paginationLink : ${paginationLinks}" class="page-item">
+                    <a
+                        class="page-link"
+                        data-th-href="${paginationLink.href}"
+                        data-th-text="${paginationLink.text}"
+                    ></a>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>

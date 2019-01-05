@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div data-th-fragment="country-selector(addressType, countries)" class="dropdown col-md-6">
+            <div>
+                <select class="custom-select" data-th-name="|${addressType}.countryId|" data-th-id="|${addressType}CountryId|">
+                    <option
+                            data-th-each="country : ${countries}"
+                            data-th-text="${country.displayName}"
+                            data-th-value="${country.countryId}">
+                    </option>
+                </select>
+            </div>
+        </div>
+    </body>
+</html>

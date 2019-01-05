@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <ul data-th-fragment="user-profile-menu(currentActive)" class="nav nav-pills mb-3">
+
+            <li class="active nav-item">
+                <a class="nav-link" href="/userprofile" data-th-classappend="${currentActive == 'infos'} ? 'active'" >Infos</a>
+            </li>
+
+            <li class="active nav-item">
+                <a class="nav-link" href="/userprofile/orders" data-th-classappend="${currentActive == 'orders'} ? 'active'" >Orders</a>
+            </li>
+        </ul>
+    </body>
+</html>
