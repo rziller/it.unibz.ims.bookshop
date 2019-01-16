@@ -24,11 +24,11 @@ public class BookshopApplication extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-				.requiresChannel()
+				/*.requiresChannel()
 					.anyRequest()
 						.requiresSecure()
 
-				.and()
+				.and()*/
 
 				.authorizeRequests()
 					.antMatchers("/userprofile/**", "/admin/**")
