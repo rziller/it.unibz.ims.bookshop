@@ -32,6 +32,11 @@ public class ProductService {
         return productRepository.findById(productId);
     }
 
+    public boolean deleteById(UUID productId) {
+        productRepository.deleteById(productId);
+        return true;
+    }
+
     public Page<Product> findSearchResult(Map<String, String> queryParameters, HttpServletRequest request) {
         String SearchQuery = queryParameters.get("query");
         Pageable pageable = pageableService.createPageRequest(queryParameters);

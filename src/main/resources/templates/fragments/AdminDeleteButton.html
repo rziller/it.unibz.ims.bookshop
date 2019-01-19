@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<form data-th-fragment="admin-delete-button(productId)" action="/admin/product/delete" method="post">
+    <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+    <input type="hidden" name="productId" id="productId" data-th-value="${productId}" />
+    <button type="submit" class="btn btn-primary mb-2 ">Delete</button>
+</form>
+</body>
+</html>

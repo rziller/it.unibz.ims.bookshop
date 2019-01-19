@@ -8,11 +8,8 @@
                     <img class="mr-3" width="220px" height="300px" data-th-src="|/img/bookcover/${product.productId}.png|" alt="Product Image">
                     <div class="media-body">
                         <h2 class="mt-0" data-th-text="${product.name}"></h2>
-                        <a class="btn btn-primary mb-1" data-th-href="|/product/${product.productId}|">Product Details</a>
-                        <form data-th-replace="fragments/ShoppingCartButton :: shopping-cart-button(${product.productId})"></form>
-                        <div>
-                            <span class="ml-3" data-th-text="|Price:  ${product.price} €|"></span>
-                        </div>
+                        <a class="btn btn-primary mb-1" data-th-href="|/admin/product/${product.productId}|">Edit</a>
+                        <form data-th-replace="fragments/AdminDeleteButton :: admin-delete-button(${product.productId})"></form>
                     </div>
                 </li>
             </ul>
