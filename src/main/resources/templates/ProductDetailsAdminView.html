@@ -9,15 +9,32 @@
     <div class="row">
         <div class="col">
             <li class="media mb-3" data-th-each="product : ${viewData.content}">
+                <img class="mr-3" width="300px" height="400px" data-th-src="|/img/bookcover/${product.productId}.png|"
+                     alt="Product Image">
                 <form>
-                    <img class="mr-3" width="300px" height="400px" data-th-src="|/img/bookcover/${product.productId}.png|"
-                         alt="Product Image">
-                    <div class="media-body">
-                        <h2 class="mt-0" data-th-text="${product.name}"></h2>
-                        <div>
-                            <p data-th-text="${product.description}"></p>
+                    <input type="hidden" class="form-control" id="productId" name="product.productId"
+                           data-th-value="${product != null && product.productId != null} ? ${product.productId}">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="productName">Product Name</label>
+                            <input type="text" class="form-control" id="productName" name="product.name"
+                                   data-th-value="${product != null && product.name != null} ? ${product.name}">
                         </div>
-                        <div class="ml-3 mb-3" data-th-text="|Price:  ${product.price} €|"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="productDescription">Description</label>
+                            <textarea rows="15" cols="100" data-th-text="${product != null && product.description != null} ? ${product.description}"
+                                      id="productDescription" name="product.description">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="productPrice">Price</label>
+                            <input type="text" class="form-control" id="productPrice" name="product.price"#
+                                   data-th-value="${product != null && product.price != null} ? ${product.price}">
+                        </div>
                     </div>
                 </form>
             </li>
