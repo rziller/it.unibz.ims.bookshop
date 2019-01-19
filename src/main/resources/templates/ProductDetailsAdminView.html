@@ -24,15 +24,15 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="productDescription">Description</label>
-                            <textarea rows="15" cols="100" data-th-text="${product != null && product.description != null} ? ${product.description}"
-                                      id="productDescription" name="product.description">
+                            <textarea rows="15" cols="100" data-th-text="${product != null && product.description != null}
+                             ? ${product.description}" id="productDescription" name="product.description">
                             </textarea>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="productPrice">Price</label>
-                            <input type="text" class="form-control" id="productPrice" name="product.price"#
+                            <input type="text" class="form-control" id="productPrice" name="product.price"
                                    data-th-value="${product != null && product.price != null} ? ${product.price}">
                         </div>
                     </div>
