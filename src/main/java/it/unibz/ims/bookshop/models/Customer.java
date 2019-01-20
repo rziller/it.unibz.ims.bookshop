@@ -32,6 +32,9 @@ public class Customer {
     @Column(name="paymentmethodenumid")
     private int paymentMethodId;
 
+    @Column(name="isadmin")
+    private boolean isAdmin;
+
     @Transient
     private Address shippingAddress;
 
@@ -125,4 +128,12 @@ public class Customer {
     public boolean isValid() {
         return !this.name.isEmpty() && !this.surname.isEmpty() && !this.email.isEmpty();
     }
+
+    public boolean getIsAdmin() { return this.isAdmin;}
+
+    public void setIsAdmin( boolean isAdmin)  {
+        this.isAdmin = isAdmin;
+    }
+
+
 }

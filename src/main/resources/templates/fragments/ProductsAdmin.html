@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div data-th-fragment="product-list(products, paginationLinks)">
+            <ul class="product-list list-unstyled">
+                <li class="media mb-3" data-th-each="product : ${products}">
+                    <img class="mr-3" width="220px" height="300px" data-th-src="|/img/bookcover/${product.productId}.png|" alt="Product Image">
+                    <div class="media-body">
+                        <h2 class="mt-0" data-th-text="${product.name}"></h2>
+                        <a class="btn btn-primary mb-1" data-th-href="|/admin/product/${product.productId}|">Edit</a>
+                        <form data-th-replace="fragments/AdminDeleteButton :: admin-delete-button(${product.productId})"></form>
+                    </div>
+                </li>
+            </ul>
+            <nav data-th-replace="fragments/Pagination :: pagination(${paginationLinks})"></nav>
+        </div>
+    </body>
+</html>

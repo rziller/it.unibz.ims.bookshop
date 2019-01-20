@@ -4,10 +4,13 @@ import it.unibz.ims.bookshop.models.Customer;
 import it.unibz.ims.bookshop.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -19,6 +22,7 @@ public class CustomerService {
 
     public void handleAuthenticatedCustomer(Authentication auth) {
         Optional<Customer> authCustomerOptional = this.getAuthenticatedCustomer(auth);
+
 
         if (!authCustomerOptional.isPresent())
         {
@@ -74,5 +78,31 @@ public class CustomerService {
         deserializedCustomer.setRegistered(true);
 
         return deserializedCustomer;
+    }
+
+    public boolean isAdmin() {
+        SecurityContext secContext = SecurityContextHolder.getContext();
+        Authentication auth  = secContext.getAuthentication();
+        HashMap<String, Object> authCustomerDetails = (HashMap<String, Object>) ((OAuth2Authentication) auth).getUserAuthentication().getDetails();
+
+        Optional<Customer> authCustomerOptional = Optional.ofNullable( this.deserializeAuthenticatedCustomer(authCustomerDetails) );
+
+        if (!authCustomerOptional.isPresent()) {
+            return false;
+        }
+
+        Customer authCustomer = authCustomerOptional.get();
+
+        Optional<Customer> customerFromDb = customerRepository.findById(authCustomer.getCustomerId());
+
+        if (!customerFromDb.isPresent()) {
+            return false;
+        }
+
+        if (!customerFromDb.get().getIsAdmin()) {
+            return false;
+        }
+
+        return true;
     }
 }

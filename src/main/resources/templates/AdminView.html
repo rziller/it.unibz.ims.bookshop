@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head data-th-replace="fragments/Head :: head"></head>
+<body>
+<nav data-th-replace="fragments/Header :: header">Placeholder for Header</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div data-th-replace="fragments/ProductsAdmin :: product-list(${viewData.content}, ${viewData.paginationLinks})"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
