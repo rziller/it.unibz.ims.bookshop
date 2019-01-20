@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <li data-th-fragment="authentication-header-widget">
+            <div data-sec-authorize="isAnonymous()">
+                <!--
+                    <div class="float-left mr-2">
+                        <img src="http://via.placeholder.com/40x40" class="rounded-circle" alt="Responsive image">
+                        <span>Anonymous User</span>
+                    </div>
+                -->
+                <a data-th-href="|/oauthlogin|" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt mr-2" aria-hidden="true" ></i>Login
+                </a>
+            </div>
+            <div data-sec-authorize="isAuthenticated()">
+                <a href="/userprofile" class="btn btn-primary mr-3">
+                    <img src="/img/userprofileicon/user profile 1.png" width="24x" height="22px" class="rounded-circle" alt="Responsive image">
+                    <span data-sec-authentication="name" />
+                </a>
+                <form action="/logout" method="post" class="d-inline-block">
+                    <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-out-alt mr-2" aria-hidden="true" ></i>Logout
+                    </button>
+                </form>
+
+            </div>
+        </li>
+    </body>
+</html>

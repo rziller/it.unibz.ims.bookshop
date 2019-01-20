@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head data-th-replace="fragments/Head :: head"></head>
+<body>
+<nav data-th-replace="fragments/Header :: header">Placeholder for Header</nav>
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <h2>Shopping Cart</h2>
+            <p class="shoppingcart-total">
+                Total products: <span data-th-text="${ viewData.content.getTotalOrderlines() }" />
+            </p>
+            <div data-th-replace="fragments/Orderlines :: orderlines-list(${viewData.content.orderLines})"></div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <div data-th-if="${ viewData.content.getTotalOrderlines() > 0}">
+                <a class="btn btn-primary mr-3" href="/checkout" style="float: left;">Checkout</a>
+                <form action="/shoppingcart/product-list/delete" data-th-method="post">
+                    <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+                    <input type="hidden" id="orderId" name="orderId" data-th-value="${ viewData.content.orderId }" />
+                    <button type="submit" class="btn btn-link text-danger">x Clear Shopping Cart</button>
+                </form>
+            </div>
+        </div>
+        <div class="col h4 text-center">
+            Total: <span data-th-text="${ viewData.content.getTotalPriceTransient() }" /> €
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

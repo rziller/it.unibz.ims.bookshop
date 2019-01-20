@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:border="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml"
+      xmlns:background-image="http://www.w3.org/1999/xhtml">
+<head data-th-replace="fragments/Head :: head"></head>
+<body>
+    <nav data-th-replace="fragments/Header :: header">Placeholder for Header
+    </nav>
+
+    <div class="container mb-6">
+        <div class="form-horizontal">
+
+            <h2 class="mb-3">User Profile</h2>
+
+            <div data-th-replace="fragments/UserProfileMenu :: user-profile-menu('orders')" />
+
+            <h3>Orders</h3>
+
+            <table class="w-100">
+                <thead>
+                    <th>Order Id</th>
+                    <th class="text-center">Order Date</th>
+                    <th class="text-center">Total Price</th>
+                </thead>
+                <tbody>
+                    <tr data-th-each="order : ${viewData.content}">
+                        <td data-th-text="${order.orderId}" />
+                        <td class="text-center" data-th-text="${order.orderDate}" />
+                        <td class="text-center" data-th-text="${order.getTotalPrice()}" />
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>
+</html>
+

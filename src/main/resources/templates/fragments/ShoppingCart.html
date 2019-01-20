@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+    <body>
+        <li data-th-fragment="shopping-cart-header-widget">
+            <a data-th-href="|/shoppingcart|" class="btn btn-primary mr-4">
+                <i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i>Shopping Cart
+                &nbsp;&nbsp;
+                <span class="badge badge-light"
+                      data-th-text='${#session.getAttribute("Shopping_Cart_Total_Products")}'>9</span>
+            </a>
+        </li>
+    </body>
+</html>

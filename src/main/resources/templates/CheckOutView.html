@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head data-th-replace="fragments/Head :: head"></head>
+    <body>
+        <nav data-th-replace="fragments/Header :: header">Placeholder for Header</nav>
+
+        <div class="container mb-6">
+
+            <h2>Check Out</h2>
+
+            <form action="/checkout/result" method="post">
+                <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+                <div class="form-horizontal">
+                    <h3>Customer Information</h3>
+
+                    <!-- TODO if customer is logged in set parameter of customer-information-form to false -->
+                    <div data-sec-authorize="isAnonymous()"
+                         data-th-replace="fragments/CustomerInformationForm :: customer-information-form('true', null)" />
+
+                    <div data-sec-authorize="isAuthenticated()"
+                         data-th-replace="fragments/CustomerInformationForm :: customer-information-form('false', ${viewDataCustomer})" />
+
+                    <br />
+                    <hr />
+                    <br />
+
+                    <h3>Shipping Address</h3>
+
+                    <div data-th-replace="fragments/AddressForm :: address-form('shipping', ${viewDataShippingAddress}, ${viewDataCountries.content} )" />
+
+                    <br />
+                    <hr />
+                    <br />
+
+                    <h3>Billing Address</h3>
+
+                    <div data-th-replace="fragments/Script :: billingToShippingAddress" />
+
+                    <div data-th-replace="fragments/AddressForm :: address-form('billing', ${viewDataBillingAddress}, ${viewDataCountries.content} )" />
+
+                    <br />
+                    <hr />
+                    <br />
+
+                    <h3>Payment Method</h3>
+
+                    <!-- TODO pass payment method data -->
+                    <div data-th-replace="fragments/PaymentMethodForm :: payment-method-form(null)" />
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary mt-6 mb-4">Check-out</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+

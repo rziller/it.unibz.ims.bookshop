@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div data-th-fragment="address-form(addressType, address, countries)">
+
+            <input type="hidden"
+                   data-th-name="|${addressType}AddressId|"
+                   data-th-value="${address != null && address.content != null} ? ${address.content.addressId}" />
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label data-th-for="|${addressType}Name|">Name</label>
+                    <input type="text" class="form-control"
+                           data-th-id="|${addressType}Name|"
+                           data-th-name="|${addressType}.name|"
+                           data-th-value="${address != null && address.content != null} ? ${address.content.name}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label data-th-for="|${addressType}Surname|">Surname</label>
+                    <input type="text" class="form-control"
+                           data-th-id="|${addressType}Surname|"
+                           data-th-name="|${addressType}.surname|"
+                           data-th-value="${address != null && address.content != null} ? ${address.content.surname}">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label data-th-for="|${addressType}Address|">Address</label>
+                    <input class="form-control" type="text"
+                           data-th-id="|${addressType}Address|"
+                           data-th-name="|${addressType}.street|"
+                           data-th-value="${address != null && address.content != null} ? ${address.content.street}">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label data-th-for="|${addressType}Zip|">Zip</label>
+                    <input type="text" class="form-control"
+                           data-th-id="|${addressType}Zip|"
+                           data-th-name="|${addressType}.zipCode|"
+                           data-th-value="${address != null && address.content != null} ? ${address.content.zipCode}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label data-th-for="|${addressType}City|">City</label>
+                    <input type="text" class="form-control"
+                           data-th-id="|${addressType}City|"
+                           data-th-name="|${addressType}.city|"
+                           data-th-value="${address != null && address.content != null} ? ${address.content.city}">
+                </div>
+
+                <div data-th-replace="fragments/CountrySelector :: country-selector( ${addressType}, ${countries} )" />
+            </div>
+        </div>
+    </body>
+</html>

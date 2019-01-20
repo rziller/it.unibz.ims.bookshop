@@ -1,0 +1,67 @@
+# =================================================================================================
+# APPLICATION SPECIFIC SPRING BOOT PROPERTIES
+#
+# The settings in this file override the default Spring Boot Props.
+# A list of Spring Boot Properties can be found here:
+# https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# =================================================================================================
+
+bookshop:
+  product-list:
+    default-page-size: 5
+
+logging:
+    level:
+      root: error
+      org:
+        hibernate:
+          type: error
+        springframework:
+          web: error
+
+security:
+  oauth2:
+    client:
+      clientId: <clientId>
+      clientSecret: <clientSecret>
+      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+      clientAuthenticationScheme: form
+      scope:
+        - openid
+        - email
+        - profile
+    resource:
+      userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+      preferTokenInfo: true#
+  require-ssl: <true|false>
+
+server:
+  port: <port-number>
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:<keystore-file-name>
+    key-store-password: <key-store-password>
+    key-alias: <key-alias>
+
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://<host>:<port>/<database-name>
+    username: <username>
+    password: <password>
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: <true|false>
+        use_sql_comments: <true|false>
+        format_sql: <true|false>
+
+  session:
+    store-type: jdbc
+    jdbc:
+    initialize-schema: always

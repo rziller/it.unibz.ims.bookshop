@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+    <form data-th-fragment="shopping-cart-button(productId)" action="/shoppingcart/product" method="post">
+        <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+        <input type="hidden" name="productId" id="productId" data-th-value="${productId}" />
+        <input type="hidden" name="qty" id="qty" data-th-value="1" />
+        <button type="submit" class="btn btn-primary mb-2 ">Add to Shopping Cart</button>
+    </form>
+    </body>
+</html>
