@@ -11,13 +11,14 @@
             <li class="media mb-3" data-th-each="product : ${viewData.content}">
                 <img class="mr-3" width="300px" height="400px" data-th-src="|/img/bookcover/${product.productId}.png|"
                      alt="Product Image">
-                <form>
-                    <input type="hidden" class="form-control" id="productId" name="product.productId"
+                <form action="/admin/product/edit" method="post">
+                    <input data-th-replace="fragments/CsfrInputField :: csfr-input-field" />
+                    <input type="hidden" class="form-control" id="productId" name="productId"
                            data-th-value="${product != null && product.productId != null} ? ${product.productId}">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="productName">Product Name</label>
-                            <input type="text" class="form-control" id="productName" name="product.name"
+                            <input type="text" class="form-control" id="productName" name="name"
                                    data-th-value="${product != null && product.name != null} ? ${product.name}">
                         </div>
                     </div>
@@ -25,17 +26,18 @@
                         <div class="form-group col-md-12">
                             <label for="productDescription">Description</label>
                             <textarea rows="15" cols="100" data-th-text="${product != null && product.description != null}
-                             ? ${product.description}" id="productDescription" name="product.description">
+                             ? ${product.description}" id="productDescription" name="description">
                             </textarea>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="productPrice">Price</label>
-                            <input type="text" class="form-control" id="productPrice" name="product.price"
+                            <input type="text" class="form-control" id="productPrice" name="price"
                                    data-th-value="${product != null && product.price != null} ? ${product.price}">
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-primary mb-2 ">Save</button>
                 </form>
             </li>
         </div>

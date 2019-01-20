@@ -23,7 +23,7 @@ public class Product {
     @Column(name="price")
     private float price;
 
-    protected Product() {}
+    public Product() {}
 
     public UUID getProductId() {
         return this.productId;

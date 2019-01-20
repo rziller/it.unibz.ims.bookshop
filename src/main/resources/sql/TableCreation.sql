@@ -48,6 +48,7 @@ FOREIGN KEY (CountryId) REFERENCES Country(CountryId));
 CREATE TABLE IF NOT EXISTS Customer (
 CustomerId varchar(255) NOT NULL,
 IsRegistered boolean DEFAULT false,
+IsAdmin boolean DEFAULT false,
 Name varchar(40) NOT NULL DEFAULT 'guest',
 Surname varchar(40) NOT NULL DEFAULT 'guest',
 EMail varchar (40),
